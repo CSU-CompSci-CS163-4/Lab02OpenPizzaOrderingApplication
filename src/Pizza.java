@@ -1,29 +1,35 @@
 public class Pizza {
-    double radius;
+    int pizzaSize = 0;
+    int numToppings = 0;
+    double pizzaPrice = 0;
+    double tax = 0;
 
-    public void setRadius(double x) {
-        radius = x;
+    public void setSize(int size) {
+        pizzaSize = size;
     }
 
-    public double getRadius() {
-        return radius;
+    public void setToppings(int toppings) {
+        numToppings = toppings;
     }
 
-    //Step 3
-    //calculateYearlyPizzaCost(double pizzaPrice)
-    //Here you will construct both the method signature and body
-
-    //Step 4
-    public double calculateArea() {
-        //TODO: STUDENT
-        return 0; //This line will be changed
+    public double getPizzaPrice() {
+        return pizzaPrice;
     }
 
-    //Step 5
-    //Given the area of the pizza and the price
-    //How much is each area unit worth per the total price of the pizza?
-    public double calculateCostPerUnit(double pizzaPrice) {
-        //TODO: STUDENT
-        return 0; //This line will be changed
+    public void calculateBasePizzaPrice() {
+        //TODO Student
+    }
+
+    public void addDeliveryFee(int delivery) {
+        //TODO Student
+    }
+
+    public void addPizzaTax(int taxRate) {
+        //TODO Student
+    }
+
+    public double getPrepTime() {
+        //TODO Student
+        return 0; //This line will also be changed.
     }
 }

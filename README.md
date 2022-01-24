@@ -1,63 +1,61 @@
 # Lab 02 - Methods and Objects
 ## Introduction
-This lab contains two files that you will modify, one of which contains our `main` function, `MethodsObjects`, and another that is an object that you will modify and implement within the `main`. 
+After completing all of the following methods, in Step 7 you will be expected to test each of the methods, as well as those included within your Pizza object.
 
-This object is a `Pizza` object which holds a single variable, the radius of the pizza. This radius variable can be used in the methods that we create within our `Pizza` object.
+This lab only has one file that you will modify, **Pizza.java**, but three files are included to allow you to test and run the Pizza Ordering Application.
+
+Within the **Pizza.java**, there are 4 variables that are associated with each "Pizza" object. Throughout this lab our "Pizza" object will have it's variables modified to yield the correct output. 
 
 For more information on `Methods` and `Objects`, there is background information included below the steps.
 
-The first two steps will be located within the first file `MethodsObjects`.
+## Pre-Step: Application Flow
+To view the application, check out **OpenPizzaOrderingApp.java**, this file contains our *main* method.
+Within the *main* method you can see a commented out runApp() method call. Once you are finished with all of the steps and have tested each method you should uncomment this call and see how the applicaiton runs.
 
-After completing all of the following methods, in Step 7 you will be expected to test each of the methods, as well as those included within your Pizza object.
+As you follow the below summary, try to follow along and read through the application to gain a better understanding of how it works.
 
-## Step 1: calculateSalary(double hourlyWage)
-The first method to complete will be calculateSalary, which has a return type of double and takes a single parameter of a double. Within this method we will assume the worker has an hourly wage and works 40 hours for 50 weeks in the year.
+To get into the application flow that begins in runApp(), we first create two objects, a *Scanner* and a *Pizza*. After object creation we call *printWelcome()* to print a simple welcome message, this is followed by a call to to the *getPizzaInfo(scnr, pizzaObj)* method. Within that call we pass both previously created objects to be used within the method.
 
-This method returns a double which is the product of the hourly wage, a 40 hour week, and 50 weeks.
+Once we have and set the needed information in *getPizzaInfo* we invoke the Pizza object's *calculateBasePizzaPrice* method to attain the pizza's base price. The two following methods, *getDeliveryInfo(scnr, pizzaObj)* & *getTaxInfo(scnr, pizzaObj)*, are used to add additional costs on top of the base price.
 
-Given that the parameter provided, hourlyWage, was 12.00. The double 24000.00 would be returned.
+For the last part of our application we use *printFinalInfo()* to print the final information that the app user would find useful.
 
-When testing you can assign the returned value to a variable for use in the next method.
+### Testing
+As you work through the following methods, there is an included testing file that you can use by uncommenting the test method calls in the *main* method. Once uncommented you should see the test's output in the program output section of zyBooks. 
 
-## Step 2: calculateSalaryTax(double salary, double taxRate)
-This method calculates the amount of tax that will be applied onto a given salary and the rate at which it will be taxed, both of these will be passed to the method as parameters.
+It is recommended to test your methods as you work through them in this assignment and many future assignments. Once finished with all of the following steps run the tests all at once.
 
-The taxRate parameter provided will be a whole number(0-100), and will need to be divided by 100 for the proper tax percentile. So if 5.0 is provided as the taxRate, the percentile is 0.05.
+After completing the steps you can run the application by uncommenting the *runApp()* call in the *main* method. ZyBooks can be finicky with user input so on the *Enter program input* enter a pizza size(1-3), number of toppings (0-10), delivery confirmation (0-1), and a tax rate (0-20). Once you have these four whole numbers in the program input, run your application in develop mode with uncommented *runApp()*.
 
-Once you have obtained the tax percentile, the specific salary tax can be obtained by multiplying the salary by your calculated tax percentile. Remember to then return this value.
+## Step 1: App Runthrough
+Before you begin to program try to run through the Application in its entirety. Do this by following the method calls and reading through what each method does after it is called.
 
-### Steps 3-5 are contained within the Pizza.java file
-## Step 3: calculateYearlyPizzaCost(double pizzaPrice) 
-You will assemble this method completely on your own, when creating the signature it is recommended to copy and paste the method name and parameters as they are above.
+Once you feel that you have a decent understanding, run the application in zyBook's **Develop Mode**. It will not display the correct output until you have completed the required methods within **Pizza.java**, but it should still run in its current state.
 
-This method will be public, have a return type of double, and takes a single double parameter, pizzaPrice.
+### The following steps will be implemented by you within the Pizza.java file.
+Within the **main** method of the **OpenPizzaOrderingApp.java**
 
-After completing the method signature, don't forget to add your curly braces for the methods body to be contained in.
+## Step 2: calculateBasePizzaPrice()
+To begin with this method, the variables pizzaSize & numToppings must be set within the Pizza object, this is already done within the application and tester files.
 
-This method will assume that the person we are working with eats a singular pizza every day of the week, all 52 weeks of the year. The pizza price is given as a parameter, and only needs to be multiplied by the amount of days in a year. This value will then be returned.
+Using the pizzaSize & numToppings, it sets the correct pizza price. The pizza price ranges from 1-3, whichever size is chosen is multiplied by a factor of 6.5 and added to the pizzaPrice variable that also present within the Pizza object. The same applies to numToppings, 0-10, which is multiplied by a factor of .65.
 
-## Step 4: calculateArea()
-This method will use the variable at the beginning of this Pizza class. This method will calculate the area of our pizza object using the radius variable. Referring back to middle school geometry, a circles area is, A = Pi * Radius^2. For our use, pi only needs to be 3.14.
+Example: Given a size 2 pizza & 0 toppings the pizza's base price would be $13.00. Given a size 3 pizza with 4 toppings the pizza's base price would be  $22.10.
 
-Once you have setup the area calculation, remember to return it.
+## Step 3: addDeliveryFee(int delivery)
+This method takes a singular parameter, *delivery*, which will be a 1 or 0 depending if the application user requested delivery. When the *delivery* is 1, 5 will be added to the running pizzaPrice variable. When the *delivery* is 0, no fee needs to be added.
 
-## Step 5: calculateCostPerUnit(double pizzaPrice)
-Within this method you will determine the cost of each unit of the pizza, given the pizza price. In addition to the pizza price, you will also need the are of a pizza, which can be achieved by calling the calculateArea() method within this one, remember to set it to a variable so you can use it.
+A simple multiplication statement is the best solution to this method.
 
-Once you have obtained the pricePerUnit, remember to return it.
+## Step 4: addPizzaTax(int taxRate)
+This methods single parameter is a whole number, the *taxRate* variable. Using this taxRate, you will calculate the tax that would be applied to this pizza using the base price and added delivery fee.
 
-### Steps 6 & 7 will be within MethodsObjects.java
-## Step 6: calculateAfterPizzaSalary(double salary, double dailyPizzaCost) 
-This method calculates how much money will be left over after their salary has been taxed and has bought a pizza each day in the year.
+The taxRate parameter will be provided as a whole number, so it should be converted to a decimal to make the tax calculation more simple.
 
-The parameters provided will be the afterTaxSalary and the yearlyPizzaCost.
+## Step 5: getPrepTime()
+**getPrepTime** follows the same logic as the **calculateBasePrice()** method, but instead of a price, this method will calculate the time it takes to prep this pizza and then return that value. The pizzaSize is now multiplied by a factor of 8 and then added to a variable. The numToppings is then multiplied by a factor of 1.5 and added to you previously declared variable.
 
-The returned value should be the yearlyPizzaCost deducted from the afterTaxSalary.
-
-## Step 7: Testing each of these methods.
-Within the **main** method you can see that a couple of test have already been added. It is recommended to test all methods out within this main function. For the methods that reside within the Pizza file you must create an instance of the object.
-
-For now the recommend path of testing is to just print out the value you are verifying. In industry there are many more in-depth and expansive methods of testing.
+After you add both products to your variable, you then return it.
 
 # Background Information
 
@@ -113,7 +111,9 @@ Almost every object has variables and methods associated with it.
 
 For a real analogy we could say a car is an object, and how a car has a max speed, color, and different parts, each of these could be tied to a variable within an object. A car can also drive, brake, and turn, each of these functions within a car could be tied to a method within an object.
 
-An object is contained within a class, as method naming uses camelCase, objects and classes have the first letter in each word capitalized.
+An object is contained within a class. 
+
+Method naming uses camelCase, objects and classes have the first letter in each word capitalized.
 
 A very simple object may look like:
 ``` java
@@ -133,4 +133,4 @@ public static void main(String[] args) {
 ```
 After we call the *printData()* method that is apart of the *MyObject* object/type, our data, 13, will then be printed.
 
-This was only to serve as a small introduction to objects and calling methods that are apart of object, we will greatly expand upon methods and objects within further in this course.
+This was only to serve as a small introduction to objects and calling methods that are apart of objects, we will greatly expand upon methods and objects further in this course.

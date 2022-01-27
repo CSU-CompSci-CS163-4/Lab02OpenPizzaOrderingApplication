@@ -1,6 +1,6 @@
 # Lab 02 - Methods and Objects
 ## Introduction
-After completing all of the following methods, in Step 7 you will be expected to test each of the methods, as well as those included within your Pizza object.
+After completing all of the following methods, you will be expected to test each of the methods, as well as those included within your Pizza object. These tests will be performed using the commented lines within your **main** method.
 
 This lab only has one file that you will modify, **Pizza.java**, but three files are included to allow you to test and run the Pizza Ordering Application.
 
